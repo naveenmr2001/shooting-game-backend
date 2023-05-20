@@ -1,9 +1,12 @@
 package com.m2p.shootinggame;
 
+import org.springframework.context.annotation.Configuration;
 
+
+@Configuration
 public class HeroCharacter {
     private int health = 100;
-    private final int damage = 20;
+
     public int getHealth() {
         return health;
     }
@@ -12,7 +15,8 @@ public class HeroCharacter {
         this.health = health;
     }
     public void damage() {
-        this.setHealth(this.health-damage);
+        int damage = 20;
+        this.setHealth(this.health- damage);
     }
 
 }

@@ -1,27 +1,37 @@
 package com.m2p.shootinggame;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class ShootingGameService {
-    private int heroHealth = 100;
+@Import(HeroCharacter.class)
+public class ShootingGameService extends RuntimeException{
+    
+    @Autowired
+    private HeroCharacter heroCharacter;
+    
+    @Autowired 
+    private VillanCharacter villanCharacter;
 
-    private int villanHealth = 100;
-    public int getHealth(String heroOrVillan) {
+    public Integer getHealth(String heroOrVillan) throws IllegalArgumentException{
         if(heroOrVillan.equals("Hero")){
-            return heroHealth;
+            return heroCharacter.getHealth();
+        }else if(heroOrVillan.equals("Villan")){
+            return villanCharacter.getHealth();
         }
-        return villanHealth;
+        throw new IllegalArgumentException("Illegal Argument for getHealth");
     }
 
-    public String postShooting(String heroOrVillan){
+    public void postShooting(String heroOrVillan) {
         if(heroOrVillan.equals("Hero")){
-            return "{\"content\": \"Post for Hero\"}";
+            villanCharacter.damage();
+        }else if(heroOrVillan.equals("Villan")){
+            heroCharacter.damage();
         }
-        return "{\"content\": \"Post for Villan\"}";
     }
 
-    public void setArmorOfVillan(){
-
-    };
+    public void setArmorOfVillan() {
+    }
 }

@@ -41,7 +41,6 @@ public class ShootingGameControllerTests {
 
     @Test
     void toCheckTheShootingOfVillan() throws Exception {
-        Mockito.when(shootingGameService.postShooting("Villan")).thenReturn("{\"content\": \"Post for Villan\"}");
         mockMvc.perform(MockMvcRequestBuilders.post("/shoot?heroOrVillan=Villan"))
                 .andDo(print())
                 .andExpect(status().is(201));
@@ -49,7 +48,6 @@ public class ShootingGameControllerTests {
 
     @Test
     void toCheckTheShootingOfHero() throws Exception {
-        Mockito.when(shootingGameService.postShooting("Hero")).thenReturn("{\"content\": \"Post for Hero\"}");
         mockMvc.perform(MockMvcRequestBuilders.post("/shoot?heroOrVillan=Hero"))
                 .andDo(print())
                 .andExpect(status().is(201));

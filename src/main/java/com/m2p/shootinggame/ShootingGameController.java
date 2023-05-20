@@ -23,13 +23,12 @@ public class ShootingGameController {
     @PostMapping("/shoot")
     @ResponseBody
     @ResponseStatus(code= HttpStatus.CREATED)
-    public String postDataOfShooting(@RequestParam String heroOrVillan){
+    public void postDataOfShooting(@RequestParam String heroOrVillan){
         if(heroOrVillan.equals("Hero")){
-            return shootingGameService.postShooting("Hero");
+            shootingGameService.postShooting("Hero");
         }else if(heroOrVillan.equals("Villan")){
-            return shootingGameService.postShooting("Villan");
+            shootingGameService.postShooting("Villan");
         }
-        return "Error";
     }
 
     @PostMapping("/armor")

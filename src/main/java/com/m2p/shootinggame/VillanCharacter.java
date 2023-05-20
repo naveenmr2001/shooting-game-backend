@@ -1,7 +1,10 @@
 package com.m2p.shootinggame;
 
 
+import org.springframework.context.annotation.Configuration;
 
+
+@Configuration
 public class VillanCharacter extends HeroCharacter {
 
     private Boolean isArmour = false;
@@ -15,10 +18,12 @@ public class VillanCharacter extends HeroCharacter {
 
     @Override
     public void damage(){
+        int damage;
         if(this.getIsArmour()){
-            super.setHealth(getHealth()-10);
+            damage = 10;
         }else {
-            super.setHealth(getHealth()-20);
+            damage = 20;
         }
+        super.setHealth(getHealth()-damage);
     }
 }

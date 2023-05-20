@@ -3,14 +3,13 @@ package com.m2p.shootinggame;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
+
+import java.beans.JavaBean;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.not;
-
 @SpringBootTest
 @ContextConfiguration(classes = VillanCharacter.class)
 public class VillanTests {
