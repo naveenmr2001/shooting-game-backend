@@ -11,9 +11,8 @@ public class HeroCharacter {
     public void setHealth(int health){
         this.health = health;
     }
-    public int damage() {
+    public void damage() {
         this.setHealth(this.health-damage);
-        return this.getHealth();
     }
 
 }

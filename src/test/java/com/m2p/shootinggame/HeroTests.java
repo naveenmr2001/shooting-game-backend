@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.annotation.Order;
 import org.springframework.test.context.ContextConfiguration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,15 +13,15 @@ import static org.hamcrest.CoreMatchers.is;
 @ContextConfiguration(classes = HeroCharacter.class)
 public class HeroTests {
 
+    @BeforeEach
+    void initBeforeEach(){
+        heroCharacter.setHealth(100);
+    }
+
     @Autowired
     private HeroCharacter heroCharacter;
 
-    @BeforeEach
-    void init(){
-        heroCharacter.setHealth(100);
-    }
     @Test
-    @Order(1)
     void toCheckWhetherTheHealthOfHeroIs100(){
         int heroHealth = heroCharacter.getHealth();
         assertThat(heroHealth,is(equalTo(100)));
@@ -30,13 +29,14 @@ public class HeroTests {
 
     @Test
     void toCheckWhetherTheDamageForHeroGetDecreasedBy20(){
-        int decreaseHealth = heroCharacter.damage();
-        assertThat(decreaseHealth,is(equalTo(80)));
+        heroCharacter.setHealth(100);
+        heroCharacter.damage();
+        assertThat(heroCharacter.getHealth(),is(equalTo(80)));
     }
     @Test
     void toCheckWhetherTheDamageForHeroGetDecreasedBy40(){
-        int waste = heroCharacter.damage();
-        int decreaseHealth = heroCharacter.damage();
-        assertThat(decreaseHealth,is(equalTo(60)));
+        heroCharacter.damage();
+        heroCharacter.damage();
+        assertThat(heroCharacter.getHealth(),is(equalTo(60)));
     }
 }
