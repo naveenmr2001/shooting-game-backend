@@ -1,6 +1,9 @@
 package com.m2p.shootinggame;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,10 +13,12 @@ import java.beans.JavaBean;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 @SpringBootTest
 @ContextConfiguration(classes = VillanCharacter.class)
+@ExtendWith(MockitoExtension.class)
 public class VillanTests {
-    @Autowired
+    @InjectMocks
     private VillanCharacter villanCharacter;
 
     @BeforeEach

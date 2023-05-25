@@ -2,6 +2,9 @@ package com.m2p.shootinggame;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,6 +16,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 @SpringBootTest
 @ContextConfiguration(classes = HeroCharacter.class)
+@ExtendWith(MockitoExtension.class)
 public class HeroTests {
 
     @BeforeEach
@@ -20,7 +24,7 @@ public class HeroTests {
         heroCharacter.setHealth(100);
     }
 
-    @Autowired
+    @InjectMocks
     private HeroCharacter heroCharacter;
 
     @Test

@@ -3,6 +3,8 @@ package com.m2p.shootinggame;
 
 import org.springframework.context.annotation.Configuration;
 
+import java.beans.JavaBean;
+
 
 @Configuration
 public class VillanCharacter extends HeroCharacter {

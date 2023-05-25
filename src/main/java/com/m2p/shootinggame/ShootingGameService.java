@@ -32,6 +32,8 @@ public class ShootingGameService extends RuntimeException{
         }
     }
 
-    public void setArmorOfVillan() {
+    public void setArmourOfVillan(Boolean trueOrFalse) {
+
+        villanCharacter.setArmour(trueOrFalse);
     }
 }
