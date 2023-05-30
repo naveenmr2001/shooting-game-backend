@@ -88,4 +88,17 @@ public class ShootingGameServiceTests {
         verify(villanCharacter).getHealth();
         verify(villanCharacter).setArmour(true);
     }
+
+    @Test
+    void toCheckTheResetOfGame(){
+        Mockito.when(heroCharacter.getHealth()).thenReturn(100);
+        Mockito.when(villanCharacter.getHealth()).thenReturn(100);
+        shootingGameService.resetGame();
+        int heroHealth = shootingGameService.getHealth("Hero");
+        int villanHealth = shootingGameService.getHealth("Villan");
+        assertThat(heroHealth,is(equalTo(100)));
+        assertThat(villanHealth,is(equalTo(100)));
+        verify(heroCharacter).getHealth();
+        verify(villanCharacter).getHealth();
+    }
 }

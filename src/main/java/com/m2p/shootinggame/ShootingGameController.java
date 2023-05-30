@@ -11,9 +11,10 @@ public class ShootingGameController extends IllegalArgumentException {
     @Autowired
     private ShootingGameService shootingGameService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/health")
     @ResponseBody
-    public ResponseEntity<Integer> getHealth(@RequestParam String heroOrVillan) throws BadArgumentsException{
+    public ResponseEntity<Integer> getHealth(@RequestParam(required = false, defaultValue = "World") String heroOrVillan) throws BadArgumentsException{
 
         if(heroOrVillan.equals("Hero")){
             return new ResponseEntity<>(shootingGameService.getHealth("Hero"),HttpStatus.OK);
@@ -24,6 +25,7 @@ public class ShootingGameController extends IllegalArgumentException {
 
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/shoot")
     @ResponseBody
     @ResponseStatus(code= HttpStatus.CREATED)
@@ -35,10 +37,18 @@ public class ShootingGameController extends IllegalArgumentException {
         }
     }
 
-    @PostMapping("/armor")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/armour")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void setArmorOfVillan(Boolean trueOrFalse){
 
         shootingGameService.setArmourOfVillan(trueOrFalse);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/reset")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void Reset(){
+        shootingGameService.resetGame();
     }
 }

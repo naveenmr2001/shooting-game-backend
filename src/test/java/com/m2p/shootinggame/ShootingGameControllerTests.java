@@ -67,7 +67,14 @@ public class ShootingGameControllerTests {
 
     @Test
     void toCheckTheArmorIsSet() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/armor?trueOrFalse=true"))
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/armour?trueOrFalse=true"))
+                .andDo(print())
+                .andExpect(status().is(201));
+    }
+
+    @Test
+    void toResetTheGame() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/reset"))
                 .andDo(print())
                 .andExpect(status().is(201));
     }

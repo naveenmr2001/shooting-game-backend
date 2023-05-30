@@ -1,12 +1,10 @@
 package com.m2p.shootinggame;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
 
 
 @Service
-@Import(HeroCharacter.class)
 public class ShootingGameService extends RuntimeException{
     
     @Autowired
@@ -35,5 +33,10 @@ public class ShootingGameService extends RuntimeException{
     public void setArmourOfVillan(Boolean trueOrFalse) {
 
         villanCharacter.setArmour(trueOrFalse);
+    }
+
+    public void resetGame() {
+        heroCharacter.setHealth(100);
+        villanCharacter.setHealth(100);
     }
 }
